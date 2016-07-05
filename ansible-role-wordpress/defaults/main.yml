@@ -1,0 +1,7 @@
+---
+
+php_timezone: America/Toronto
+
+wordpress_files_path: '/var/www/html/owncloud/data'
+
+

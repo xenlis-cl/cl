@@ -1,0 +1,18 @@
+---
+ - hosts: stadalone
+   sudo: true
+   post_tasks:
+
+     - name: installation complete - create lock file. Needs to works Nginx playbook
+       command: "touch /root/wordpress_complete"
+
+   roles:
+     - sqlite
+     - nginx
+     - wordpress
+
+
+   vars_files:
+     - defaults/main.yml
+      
+
