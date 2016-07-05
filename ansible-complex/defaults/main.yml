@@ -1,6 +1,9 @@
 ---
 
 php_timezone: America/Toronto
+php_default_char: 'UTF-8'
+
+
 #temporary hardcored! We'll use dynamic determent
 external_ip: 85.10.201.52
 #may be we doesn't need it
@@ -14,6 +17,20 @@ moving_data: '0'
 sqlite_dbs: []
 
 
-#django_home: '/usr/share/wordpress/django'
+django_home: '/usr/share/wordpress/'
 #temporary, becouse we haven't in this test server wordpress
-django_home: '/home/django'
+#django_home: '/home/django'
+
+
+#may be we doesn't need it
+wordpress_files_path: '/usr/share/wordpress/'
+#for step 2 task
+moving_data: '0'
+
+sqlite_dir: /var/lib/sqlite
+#bad code in Ansible galaxy, it doesn't work! We must to comment it!
+#sqlite_dbs: ['wordpress', 'django']
+
+#workaround, to have working role
+sqlite_dbs: []
+

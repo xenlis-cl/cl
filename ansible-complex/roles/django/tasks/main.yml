@@ -24,6 +24,9 @@
     - tk8.6-dev
     - python-tk
 
+#clean previous installation
+- command: "rm -rf {{ django_home }}/django"
+
 
 #add user django
 - user: name=django shell=/bin/bash home=/{{ django_home }}
@@ -32,13 +35,13 @@
 - pip: name=Django version=1.9.7
 
 #Install application
-- git: repo=https://github.com/kevinastone/django-api-rest-and-angular dest={{ django_home }}/django-api-rest-and-angular/
+- git: repo=https://github.com/kevinastone/django-api-rest-and-angular dest={{ django_home }}/django/ force=yes
 
 #fix ownership
 - file: dest={{ django_home }} owner=django group=django recurse=yes
 
 #install requirements of app
-- pip: requirements=/{{ django_home }}/django-api-rest-and-angular/requirements.txt
+- pip: requirements=/{{ django_home }}/django/requirements.txt
 
 - name: install node.js deps
   npm:
@@ -51,39 +54,39 @@
 #npm install under user
 - command: npm install
   args:
-    chdir: "{{ django_home }}/django-api-rest-and-angular/"
+    chdir: "{{ django_home }}/django/"
   become_user: django
 
 #bower install
 - command: bower install
   args:
-    chdir: "{{ django_home }}/django-api-rest-and-angular/"
+    chdir: "{{ django_home }}/django/"
   become_user: django
 
 #grunt
 - command: grunt
   args:
-    chdir: "{{ django_home }}/django-api-rest-and-angular/"
+    chdir: "{{ django_home }}/django/"
   become_user: django
 
 
 #database
 - command: make create_database
   args:
-    chdir: "{{ django_home }}/django-api-rest-and-angular/"
+    chdir: "{{ django_home }}/django/"
   become_user: django
 
 - command: make make_fixtures
   args:
-    chdir: "{{ django_home }}/django-api-rest-and-angular/"
+    chdir: "{{ django_home }}/django/"
   become_user: django
 
 
   #temporary for debug
-- shell: python2.7 manage.py runserver 0.0.0.0:8000
-  args:
-    chdir: "{{ django_home }}/django-api-rest-and-angular/"
-  become_user: django
+#- shell: python2.7 manage.py runserver 0.0.0.0:8000
+#  args:
+#    chdir: "{{ django_home }}/django-api-rest-and-angular/"
+#  become_user: django
 
 
 
