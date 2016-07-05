@@ -1,7 +1,5 @@
 ---
 
 php_timezone: America/Toronto
-
-wordpress_files_path: '/var/www/html/owncloud/data'
-
-
+external_ip: 85.10.201.52
+wordpress_files_path: '/var/www/html/wordpress/'

@@ -7,9 +7,9 @@
        command: "touch /root/wordpress_complete"
 
    roles:
-     - sqlite
+ #    - sqlite
      - nginx
-     - wordpress
+ #    - wordpress
 
 
    vars_files:
