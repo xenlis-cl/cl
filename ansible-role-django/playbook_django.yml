@@ -1,0 +1,16 @@
+---
+ - hosts: stadalone
+   become: true
+#   post_tasks:
+#
+#     - name: installation complete - create lock file. Needs to works Nginx playbook
+#       file: path=/root/django_complete state=file
+
+   roles:
+     - django
+
+
+   vars_files:
+     - defaults/main.yml
+      
+
