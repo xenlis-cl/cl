@@ -8,9 +8,25 @@
 
    roles:
 # install some tools
-     - misc
+
 # role from ansible galaxy.
-#     - role: mrwilson.sqlite 
+#     - role: mjanser.mysql
+ #      mysql_root_password: {{ mysql_root_pw }}
+#       mysql_root_password: secret
+#       mysql_databases:
+#       - name: wordpress
+
+ #      mysql_users:
+ #      - name: wordpress
+#         password: {{ wordpress_db_password }}
+ #        password: secret
+ #        privileges: "wordpress.*:ALL"
+
+     - { role: mjanser.mysql, mysql_root_password: "{{ mysql_root_pw }}", mysql_databases: [{ name: wordpress }], mysql_users: [{ name: wordpress, password: "{{ wordpress_db_pw }}", privileges: "wordpress.*:ALL" }] }
+
+     - misc
+
+# role from ansible galaxy.
      - mrwilson.sqlite
 # my role
      - nginx

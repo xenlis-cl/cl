@@ -34,3 +34,9 @@ sqlite_dir: /var/lib/sqlite
 #workaround, to have working role
 sqlite_dbs: []
 
+
+mysql_root_pw: secret
+wordpress_db_pw: secret
+
+
+
