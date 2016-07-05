@@ -4,7 +4,7 @@
    post_tasks:
 
      - name: installation complete - create lock file. Needs to works Nginx playbook
-       command: "touch /root/wordpress_complete"
+       file: path=/root/wordpress_complete state=file
 
    roles:
 # role from ansible galaxy.
