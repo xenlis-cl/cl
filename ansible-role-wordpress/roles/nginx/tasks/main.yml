@@ -1,16 +1,4 @@
 ---
-# tasks file to the change Apache to Nginx in owncloud installation
-
-
-   #check if wordpress lock file exist
-#- name: check if wordpress lock file exist
-#  stat: path=/root/wordpress_complete
-#  register: wordpress_installed
-
-#- name: condition check if owncloud lock file exist
-#  fail: msg="Wordpress not installed!"
-#  when: wordpress_installed.stat.exists == False
-
 - name: Install nginx and php5-fpm
   apt:
     name: "{{ item }}"
@@ -27,6 +15,9 @@
 
 #setting up nginx service
 - service: name=php5-fpm state=started enabled=yes
+
+#we have other default host, and can't to use this! 
+- file: path=/etc/nginx/sites-enabled/default state=absent
 
 #push owncloud nginx config
 - name: owncloud nginx config

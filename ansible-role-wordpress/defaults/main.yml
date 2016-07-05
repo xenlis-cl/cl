@@ -1,5 +1,16 @@
 ---
 
 php_timezone: America/Toronto
+#temporary hardcored! We'll use dynamic determent
 external_ip: 85.10.201.52
-wordpress_files_path: '/var/www/html/wordpress/'
+#may be we doesn't need it
+wordpress_files_path: '/usr/share/wordpress/'
+#for step 2 task
+moving_data: '0'
+
+sqlite_dir: /var/lib/sqlite
+#bad code in Ansible galaxy, it doesn't work! We must to comment it!
+#sqlite_dbs: ['wordpress', 'django']
+
+#workaround, to have working role
+sqlite_dbs: []

@@ -7,9 +7,14 @@
        command: "touch /root/wordpress_complete"
 
    roles:
- #    - sqlite
-     - nginx
- #    - wordpress
+# role from ansible galaxy.
+     - role: mrwilson.sqlite 
+       #sqlite_dir: /opt/sqlite 
+       #sqlite_dbs: [ wordpress ]
+# my role
+#     - nginx
+# my role
+#     - wordpress
 
 
    vars_files:
