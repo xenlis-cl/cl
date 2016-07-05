@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd '{{ new_server_files_path }}'
+cd ../config/
+sed -ie '/trusted_domains/,+3d' config.php
+sed -i '$ d' config.php
+cat config.php config.php.end > config.php.new
+mv config.php config.php.b
+cp config.php.new config.php
+chown apache: config.php

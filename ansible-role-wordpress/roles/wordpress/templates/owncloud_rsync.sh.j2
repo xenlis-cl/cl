@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+#rsync --delay-updates -F --compress --archive --rsh "ssh  -S none -o StrictHostKeyChecking=no" --progress {{ old_server_files_path }}/ root@{{ groups['owncloud_new'][0] }}:{{ new_server_files_path }}/
+
+
+rsync --delay-updates -Ft --compress --archive --rsh "ssh  -S none -o StrictHostKeyChecking=no" --progress  root@{{ groups['owncloud_old'][0] }}:{{ old_server_files_path }}/  {{ new_server_files_path }}/
+
+#chown -R apache: {{ new_server_files_path }}/
+

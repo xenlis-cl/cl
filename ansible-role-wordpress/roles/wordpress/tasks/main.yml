@@ -1,0 +1,17 @@
+---
+#edit before commit!
+- include: apt_get_wordpress.yml
+- include: modify_php_config.yml
+
+#for second part task
+- name: wordpress rsync script install
+  when: moving_data == '1'
+  template:
+      src=wordpress_rsync.sh.j2
+      dest=/usr/local/bin/wordpress_rsync.sh
+
+
+- name: setting up correct permitions to the script rsync
+  when: moving_data == '1'
+  file: path=/usr/local/bin/wordpress_rsync.sh mode=0755
+
