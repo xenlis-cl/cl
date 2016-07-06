@@ -20,3 +20,7 @@
   when: moving_data == '1'
   file: path=/usr/local/bin/wordpress_rsync.sh mode=0755
 
+#- name: Open link and setting up owncloud
+#   debug:
+#     msg: "Please open link 'http://{{ external_ip }}/' in your favorite webbrowser, and install wordpress"
+- pause: prompt="Please open link 'http://{{ external_ip }}:{{ external_tcp_port }}/' in your favorite webbrowser, and install wordpress. After complete, please press Enter key"

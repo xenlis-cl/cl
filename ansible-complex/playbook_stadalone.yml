@@ -36,5 +36,6 @@
 
    vars_files:
      - defaults/main.yml
+     - defaults/vault_password.yml
       
 
